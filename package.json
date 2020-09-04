@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "description": "React JSON Renderer",
+  "repository": "https://github.com/moofoo/rjr-core",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
