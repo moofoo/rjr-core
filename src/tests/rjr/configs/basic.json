@@ -1,0 +1,8 @@
+{
+  "elements": [
+    {
+      "component": "div",
+      "children": "text"
+    }
+  ]
+}

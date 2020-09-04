@@ -1,0 +1,23 @@
+{
+  "elements": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "Display",
+          "properties": {
+            "elementId": "textDisplay",
+            "contents": "text"
+          }
+        },
+        {
+          "component": "Button",
+          "properties": {
+            "elementId": "mybutton",
+            "type": "button"
+          }
+        }
+      ]
+    }
+  ]
+}

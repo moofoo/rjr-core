@@ -1,0 +1,51 @@
+{
+  "name": "rjr-core",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "description": "React JSON Renderer",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@types/lodash": "^4.14.161",
+    "@types/react": "^16.9.48",
+    "@types/react-dom": "^16.9.8",
+    "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
+    "jest": "^26.4.2",
+    "json-logic-js": "^1.2.2",
+    "lodash": "^4.17.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-tracked": "^1.4.1",
+    "rollup": "^2.26.7",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "shortid": "^2.2.15",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@types/shortid": "^0.0.29"
+  }
+}

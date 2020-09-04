@@ -1,0 +1,24 @@
+{
+  "elements": [
+    {
+      "component": "fieldset",
+      "properties": {
+        "group": true,
+        "name": "nested"
+      },
+      "children": [
+        {
+          "component": "legend",
+          "children": "nested"
+        },
+        {
+          "component": "input",
+          "properties": {
+            "name": "aninput",
+            "type": "text"
+          }
+        }
+      ]
+    }
+  ]
+}

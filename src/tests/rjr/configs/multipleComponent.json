@@ -1,0 +1,27 @@
+{
+  "elements": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "Display",
+          "properties": {
+            "contents": "one"
+          }
+        },
+        {
+          "component": "Display",
+          "properties": {
+            "contents": "two"
+          }
+        },
+        {
+          "component": "Display",
+          "properties": {
+            "contents": "three"
+          }
+        }
+      ]
+    }
+  ]
+}

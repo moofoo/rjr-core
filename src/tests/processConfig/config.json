@@ -1,0 +1,23 @@
+{
+  "partials": {
+    "inputPartial": [
+      {
+        "component": "input",
+        "properties": {
+          "elementId": "myinput",
+          "name": "myinput",
+          "type": "text"
+        }
+      }
+    ]
+  },
+  "elements": [
+    {
+      "component": "div",
+      "properties": {
+        "elementId": "div"
+      },
+      "children": "inputPartial"
+    }
+  ]
+}

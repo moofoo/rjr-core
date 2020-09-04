@@ -1,0 +1,33 @@
+{
+  "elements": [
+    {
+      "component": "div",
+      "properties": {
+        "name": "parentDiv",
+        "className": "parentDivClass"
+      },
+      "children": [
+        {
+          "component": "div",
+          "properties": {
+            "name": "childDiv"
+          },
+          "children": [
+            {
+              "component": "div",
+              "properties": {
+                "name": "childDiv"
+              }
+            }
+          ]
+        },
+        {
+          "component": "div",
+          "properties": {
+            "name": "siblingChildDiv"
+          }
+        }
+      ]
+    }
+  ]
+}

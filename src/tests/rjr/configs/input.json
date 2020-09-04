@@ -1,0 +1,11 @@
+{
+  "elements": [
+    {
+      "component": "input",
+      "properties": {
+        "name": "myinput",
+        "type": "text"
+      }
+    }
+  ]
+}

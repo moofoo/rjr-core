@@ -1,0 +1,11 @@
+{
+  "elements": [
+    {
+      "component": "Display",
+      "properties": {
+        "elementId": "textDisplay",
+        "contents": "text"
+      }
+    }
+  ]
+}
