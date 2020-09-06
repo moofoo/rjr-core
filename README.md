@@ -91,48 +91,51 @@ Result
 
 ```JSON
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"definitions": {
-	"element": {
-		"type": "object",
-		"properties": {
-			"component": { "type": "string" },
-			"properties": {
-				"type": "object",
-				"properties": {
-					"elements": {
-						"type": ["array", "string"],
-						"contains": { "$ref": "#/definitions/element" }
-					},
-				"additionalProperties": true
-				},
-			"additionalProperties": true
-			},
-			"wrapper": { "type": "string" },
-			"children": {
-				"type": ["array", "string"],
-				"contains": { "$ref": "#/definitions/element" },
-				"default": []
-			}
-		}
-	}
-},
+  "$schema": "http://json-schema.org/draft-07/schema#",
 
-"type": "object",
-"properties": {
-	"elements": {
-		"type": "array",
-		"contains": { "$ref": "#/definitions/element" }
-		},
-    "partials": {
-        "type": "object",
-        "additionalProperties": {
-            "type": "array",
-            "contains": { "$ref": "#/definitions/element" }
+  "definitions": {
+    "element": {
+      "type": "object",
+      "properties": {
+        "component": { "type": "string" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "elements": {
+              "type": ["array", "string"],
+              "contains": { "$ref": "#/definitions/element" }
+            },
+            "additionalProperties": true
+          },
+          "additionalProperties": true
+        },
+        "wrapper": { "type": "string" },
+        "children": {
+          "type": ["array", "string"],
+          "contains": { "$ref": "#/definitions/element" },
+          "default": []
         }
+      }
     }
-	}
+  },
+
+  "type": "object",
+
+  "properties": {
+    "elements": {
+      "type": "array",
+      "contains": { "$ref": "#/definitions/element" }
+    },
+    "partials": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "contains": { "$ref": "#/definitions/element" }
+      }
+    }
+  }
 }
+
 ```
 
 The JSON passed to RJR via the 'config' prop should be an object with the following properties:
@@ -311,9 +314,9 @@ See the 'modifierConfigs' section for details
 
 Modifiers come in three flavors:
 
-1. rendererProps - modifies component props during the rendering loop. Has access to the props of the component's parent, so it can implement prop drilling.
-2. hocs - conditionally wraps the component in a Higher Order component
-3. wrappers - conditionally wraps the component in another component that returns the former via the 'children' prop, either by itself or potentially wrapped in other elements/components. Can also modify props.
+1. **rendererProps** - modifies component props during the rendering loop. Has access to the props of the component's parent, so it can implement prop drilling.
+2. **hocs** - conditionally wraps the component in a Higher Order component
+3. **wrappers** - conditionally wraps the component in another component that returns the former via the 'children' prop, either by itself or potentially wrapped in other elements/components. Can also modify props.
 
 These are passed to the RJR component like so:
 
@@ -321,7 +324,7 @@ These are passed to the RJR component like so:
 const App = () => {
     return <RJR config={config} componentMap={componentMap} modifiers={{
         rendererProps:[...],
-        hocs:[...]
+        hocs:[...],
         wrappers:[...]
     }}>
 }
@@ -329,13 +332,13 @@ const App = () => {
 
 Modfiers are objects with two properties:
 
-1. config - an object which provides the name of the modifier (at a minimum) and can also define the order and conditions under which the modifier is applied
-2. fn - a function which performs the modification. The arguments it recieves and the expected return value depend on the type of modification it is.
+1. **config** - an object which provides the name of the modifier (at a minimum) and can also define the order and conditions under which the modifier is applied
+2. **fn** - a function which performs the modification. The arguments it recieves and the expected return value depend on the type of modification it is.
 
 ### rendererProps
 
-- config - The config object for rendererProps only needs the name of the modifier
-- fn - The modifier function recieves the component's props and its parent component's props (parentProps) as arguments
+- **config** - The config object for rendererProps only needs the name of the modifier
+- **fn** - The modifier function recieves the component's props and its parent component's props (parentProps) as arguments
 
 ```javascript
 const passDownActiveProp =  {
@@ -362,7 +365,7 @@ const App = () => {
 
 ### hocs and wrappers
 
-- config - hocs and wrappers share the same config properties
+- **config** - hocs and wrappers share the same config properties
   - **name** _string_ - The name of the modifier
   - **order** _number_ - the order in which the hoc or wrapper is wrapped around the component.
   - **data** _object_ - data used by the modifier function
@@ -372,7 +375,7 @@ const App = () => {
 
 ### hocs
 
-- fn - A Higher Order component that recieves the component's props
+- **fn** - A Higher Order component that recieves the component's props
 
 Example
 
@@ -432,7 +435,7 @@ const App = () => {
 
 ### wrappers
 
-- fn - A function component that recieves the component's props and returns the wrapped component via the children prop;
+- **fn** - A function component that recieves the component's props and returns the wrapped component via the children prop;
 
 Example
 
