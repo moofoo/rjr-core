@@ -10,7 +10,6 @@ export default function useGetComponentProps(
 
   let tmpProps = {};
 
-  tmpProps = tmpProps || {};
   const cProps =
     typeof componentProps === 'function'
       ? componentProps({ ...props }, methods, componentPropsArg) || null
