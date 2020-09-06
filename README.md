@@ -18,7 +18,7 @@ yarn add rjr-core
 4. [Modifiers](#modifiers)
 5. [modifierConfigs](#modifierConfigs)
 
-<h2 id="basic-usage">Basic Usage</h3>
+## Basic Usage
 
 Component (DisplayContents.js)
 
@@ -87,7 +87,7 @@ Result
 
 ---
 
-<h2 id="json-schema">JSON Schema</h3>
+## JSON Schema
 
 ```JSON
 {
@@ -212,7 +212,7 @@ Is converted into this object by RJR:
 
 ---
 
-<h2 id="api">API</h3>
+## API
 
 ### **config**
 
@@ -310,7 +310,7 @@ See the 'modifierConfigs' section for details
 
 ---
 
-<h2 id="modifiers">Modifiers</h3>
+## Modifiers
 
 Modifiers come in three flavors:
 
@@ -522,7 +522,7 @@ const App = () => {
 
 ---
 
-<h2 id="modifierConfigs">modifierConfigs</h3>
+## modifierConfigs
 
 The modifierConfigs prop is used to modify modifier configs (say that three times fast). It takes an object where the key is the name of the modifier and the value is a function receiving the existing config as the argument and which returns a modified config object.
 
