@@ -31,6 +31,7 @@
     "@types/lodash": "^4.14.161",
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
+    "@types/shortid": "^0.0.29",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "enzyme": "^3.11.0",
@@ -45,8 +46,5 @@
     "rollup-plugin-typescript2": "^0.27.2",
     "shortid": "^2.2.15",
     "typescript": "^4.0.2"
-  },
-  "dependencies": {
-    "@types/shortid": "^0.0.29"
   }
 }
