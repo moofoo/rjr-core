@@ -156,7 +156,6 @@ Example:
       {
         "component": "input",
         "properties": {
-          "elementId": "myinput",
           "name": "myinput",
           "type": "text"
         }
@@ -192,7 +191,6 @@ Is converted into this object by RJR:
         {
           component: 'input',
           properties: {
-            elementId: 'myinput',
             name: 'myinput',
             type: 'text',
           },
@@ -223,7 +221,7 @@ JSON object with elements and optional partials to be rendered
 Object mapping string keys to components
 
 ```javascript
-const MySimpleComponent = (props) => <div {...props}>A very simple component</div>;
+const MySimpleComponent = (props) => <div>A very simple component</div>;
 
 const componentMap = { MySimpleComponent };
 
