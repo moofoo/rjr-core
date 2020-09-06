@@ -27,7 +27,7 @@ import React from 'react';
 
 const DisplayContents = (props) => <div {...props}>{props.contents}</div>;
 
-export default Display;
+export default DisplayContents;
 ```
 
 Component Map (componentMap.js)
