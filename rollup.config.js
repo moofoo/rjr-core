@@ -16,18 +16,6 @@ export default {
       strict: false,
     },
   ],
-  plugins: [
-    resolve({
-      preferBuiltins: false,
-      browser: true,
-      dedupe: ['react', 'react-dom'],
-    }),
-    commonjs({ include: ['node_modules/**'] }),
-    typescript(),
-    babel({
-      exclude: 'node_modules/**',
-    }),
-    json(),
-  ],
+  plugins: [commonjs(), typescript(), babel(), json()],
   external: ['react', 'react-dom'],
 };
