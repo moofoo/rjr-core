@@ -1,5 +1,5 @@
 import React from 'react';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import useGetModifierConfig from '../../../hooks/useGetModifierConfig';
 import config from './config';
 import { ComponentWithPassThru } from '../../../types';

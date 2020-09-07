@@ -3,7 +3,6 @@ import set from 'lodash/set';
 import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
 import shortid from 'shortid';
-import validateJson from './validateJson';
 import { Element, Partials, Config } from '../types';
 
 function checkPartial(partialName: string, partials: Partials = {}) {
@@ -141,7 +140,6 @@ function processElement(element: Element, config: Config) {
 }
 
 const processConfig = function processConfig(config: Config): Config {
-  validateJson(config);
   const elements = [];
 
   for (const element of config.elements) {
