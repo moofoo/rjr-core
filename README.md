@@ -20,6 +20,8 @@ yarn add rjr-core
 
 ## Basic Usage
 
+[codesandbox](https://codesandbox.io/s/basic-usage-h1hwz)
+
 Component (DisplayContents.js)
 
 ```javascript
@@ -435,7 +437,7 @@ const App = () => {
 
 - **fn** - A function component that recieves the component's props and returns the wrapped component via the children prop;
 
-Example
+Example [codesandbox](https://codesandbox.io/s/showcontrolnames-ulm28)
 
 The wrapper modifier in this example checks if the component has a 'name' property (is a form element), and if so displays the name under the component (useful when troubleshooting complicated forms with nested inputs). The modifier is applied if 'showControlNames' is passed to the RJR component.
 
@@ -521,6 +523,8 @@ const App = () => {
 ---
 
 ## modifierConfigs
+
+[codesandbox](https://codesandbox.io/s/modifierconfigs-dqimk)
 
 The modifierConfigs prop is used to modify modifier configs (say that three times fast). It takes an object where the key is the name of the modifier and the value is a function receiving the existing config as the argument and which returns a modified config object.
 
