@@ -48,7 +48,6 @@
   "dependencies": {
     "json-logic-js": "^1.2.2",
     "lodash": "^4.17.20",
-    "react-tracked": "^1.4.1",
-    "shortid": "^2.2.15"
+    "react-tracked": "^1.4.1"
   }
 }

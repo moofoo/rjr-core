@@ -2,7 +2,6 @@ import get from 'lodash/get';
 import set from 'lodash/set';
 import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
-import shortid from 'shortid';
 import { Element, Partials, Config } from '../types';
 
 function checkPartial(partialName: string, partials: Partials = {}) {
@@ -132,7 +131,7 @@ function processElement(element: Element, config: Config) {
   }
 
   if (!element.properties.elementId) {
-    element.properties.elementId = shortid.generate();
+    element.properties.elementId = Math.random().toString(36).substr(2, 9);
     element.properties.randomElementId = true;
   }
 
