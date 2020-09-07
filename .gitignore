@@ -50,3 +50,5 @@ dist
 .cache
 
 .yalc
+
+yalc.lock

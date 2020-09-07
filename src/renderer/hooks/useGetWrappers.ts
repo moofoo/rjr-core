@@ -21,8 +21,10 @@ const wrapperReduce = function wrapperReduce(
       return [...accumulator, fn];
     } else {
       if (whereParam === 'props') {
-        if (typeof where === 'function' && where(props)) {
-          return [...accumulator, fn];
+        if (typeof where === 'function') {
+          if (where(props) === true) {
+            return [...accumulator, fn];
+          }
         } else if (
           typeof where === 'object' && whereValues
             ? jsonLogic.apply(where, Object.values(props))
@@ -31,8 +33,10 @@ const wrapperReduce = function wrapperReduce(
           return [...accumulator, fn];
         }
       } else if (whereParam === 'rjrProps') {
-        if (typeof where === 'function' && where(rjrProps)) {
-          return [...accumulator, fn];
+        if (typeof where === 'function') {
+          if (where(rjrProps) === true) {
+            return [...accumulator, fn];
+          }
         } else if (
           typeof where === 'object' &&
           jsonLogic.apply(where, rjrProps)
@@ -45,8 +49,10 @@ const wrapperReduce = function wrapperReduce(
             const match = findMatch(props, key, true);
             if (match !== false) {
               const entries = componentProps[key];
-              if (typeof where === 'function' && where(props, entries)) {
-                return [...accumulator, fn];
+              if (typeof where === 'function') {
+                if (where(props, entries) === true) {
+                  return [...accumulator, fn];
+                }
               } else if (
                 typeof where === 'object' &&
                 jsonLogic.apply(where, entries)
