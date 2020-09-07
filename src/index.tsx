@@ -54,4 +54,11 @@ const ReactJsonRenderer: React.FunctionComponent<RjrProps> = function ReactJsonR
   );
 };
 
+export { default as useGetModifierConfig } from './hooks/useGetModifierConfig';
+export { default as useSetStoredProps } from './hooks/useSetStoredProps';
+export { default as Renderer } from './renderer';
+export { useRendererReferenceContext };
+export { default as createReducerContext } from './context/createReducerContext';
+export { getPathFromParts, MergeModifiers } from './util';
+
 export default ReactJsonRenderer;

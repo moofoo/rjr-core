@@ -20,7 +20,7 @@ const sortModifiers = function sortModifiers(modifiers: any) {
     );
 
     sorted.sort((a: any, b: any) => {
-      return Number(a.config.order) - Number(b.config.order);
+      return Number(b.config.order) - Number(a.config.order);
     });
 
     modifiers[modName] = [...first, ...sorted, ...withoutOrder, ...last];

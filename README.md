@@ -528,7 +528,7 @@ const App = () => {
 
 The modifierConfigs prop is used to modify modifier configs (say that three times fast). It takes an object where the key is the name of the modifier and the value is a function receiving the existing config as the argument and which returns a modified config object.
 
-In this example, it is used to add a prop name to PropBlacklist config (which comes with RJR):
+In this example, it is used to add a prop name to PropBlacklist config (which comes with RJR). The config object for PropBlacklist has a helper function (addBlacklistProp) to make this easier:
 
 ```javascript
 import React from 'react';
@@ -540,16 +540,8 @@ import componentMap from './components/componentMap';
 const App = () => {
     return <RJR  config={config} componentMap={componentMap} modifierConfigs={{
         PropBlacklist: function(config) {
-            return {
-                ...config,
-                data: {
-                    ...config.data,
-                    blacklist: [
-                    ...config.data.blacklist,
-                    'newPropToOmit',
-                    ],
-                },
-            }
+          config.addBlacklistProp('newProp');
+          return config;
         }
     }}>
 }

@@ -8,7 +8,8 @@
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "relink":"yalc remove rjr-core & yarn build & yalc publish & yalc link rjr-core"
   },
   "files": [
     "dist"

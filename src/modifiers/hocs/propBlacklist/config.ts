@@ -21,4 +21,8 @@ export default {
       'componentPropsArg',
     ],
   },
+  addBlacklistProp: function (propName: string | Array<string>) {
+    const propNames = Array.isArray(propName) ? propName : [propName];
+    this.data.blacklist = [...this.data.blacklist, ...propNames];
+  },
 };
