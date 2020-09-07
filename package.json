@@ -1,6 +1,6 @@
 {
   "name": "rjr-core",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "main": "dist/index.js",
   "license": "MIT",
   "description": "React JSON Renderer",
@@ -9,7 +9,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "test": "jest",
-    "relink":"yalc remove rjr-core & yarn build & yalc publish & yalc link rjr-core"
+    "relink": "yalc remove rjr-core & yarn build & yalc publish & yalc link rjr-core"
   },
   "files": [
     "dist"
