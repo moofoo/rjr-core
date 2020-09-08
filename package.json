@@ -5,6 +5,10 @@
   "license": "MIT",
   "description": "React JSON Renderer",
   "repository": "https://github.com/moofoo/rjr-core",
+  "keywords": [
+    "json",
+    "React"
+  ],
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
