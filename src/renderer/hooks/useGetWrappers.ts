@@ -1,9 +1,8 @@
 import React from 'react';
-import jsonLogic from 'json-logic-js';
-
 import { useRendererReferenceContext } from '../../context/RendererProvider';
 import findMatch from './findMatch';
 import { Modifier, ComponentProps } from '../../types';
+import jsonLogic from 'json-logic-js-mini';
 
 const wrapperReduce = function wrapperReduce(
   wrappersOrHocs: Array<Modifier>,

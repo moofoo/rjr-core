@@ -1,3 +1,4 @@
+import omit from 'lodash/omit';
 import { useRendererReferenceContext } from '../context/RendererProvider';
 
 const useSetStoredProps = function useSetStoredProps(props: any) {
@@ -8,7 +9,7 @@ const useSetStoredProps = function useSetStoredProps(props: any) {
       reference.current.storedProps || new Map<string, Object>();
 
     reference.current.storedProps.set(props.name || props.elementId, {
-      ...props,
+      ...omit(props, ['elements']),
     });
   }
 };

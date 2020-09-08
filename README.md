@@ -17,10 +17,14 @@ yarn add rjr-core
 3. [API](#api)
 4. [Modifiers](#modifiers)
 5. [modifierConfigs](#modifierConfigs)
+6. [useGetModifierConfig Hook](#useGetModifierConfig-hook)
+7. [Reserved PRop Names](#reserved-prop-names)
+8. [elements prop](#elements-prop)
+9. [Special functionality for Forms](#special-functionality-for-forms)
 
 ## Basic Usage
 
-[codesandbox](https://codesandbox.io/s/basic-usage-h1hwz)
+[CODESANDBOX](https://codesandbox.io/s/basic-usage-h1hwz)
 
 Component (DisplayContents.js)
 
@@ -435,11 +439,11 @@ const App = () => {
 
 ### wrappers
 
+[CODESANDBOX](https://codesandbox.io/s/showcontrolnames-ulm28)
+
 - **fn** - A function component that recieves the component's props and returns the wrapped component via the children prop;
 
-Example [codesandbox](https://codesandbox.io/s/showcontrolnames-ulm28)
-
-The wrapper modifier in this example checks if the component has a 'name' property (is a form element), and if so displays the name under the component (useful when troubleshooting complicated forms with nested inputs). The modifier is applied if 'showControlNames' is passed to the RJR component.
+The wrapper modifier in the example checks if the component has a 'name' property (is a form element), and if so displays the name under the component (useful when troubleshooting complicated forms with nested inputs). The modifier is applied if 'showControlNames' is passed to the RJR component.
 
 config.js
 
@@ -469,7 +473,7 @@ export default {
 };
 ```
 
-ShowControlNames.js
+the modifier: ShowControlNames.js
 
 ```javascript
 import React from 'react';
@@ -502,7 +506,7 @@ export default {
 };
 ```
 
-Note the use of `React.cloneElement`. Because of how components are wrapped during the rendering loop, just returning `children` will lead to the component not re-rendering correctly on updates.
+Note the use of `React.cloneElement`. Because of how components are wrapped during the rendering loop, just returning `children` will lead to the components not re-rendering correctly on updates.
 
 App.js
 
@@ -524,7 +528,7 @@ const App = () => {
 
 ## modifierConfigs
 
-[codesandbox](https://codesandbox.io/s/modifierconfigs-dqimk)
+[CODESANDBOX](https://codesandbox.io/s/modifierconfigs-dqimk)
 
 The modifierConfigs prop is used to modify modifier configs (say that three times fast). It takes an object where the key is the name of the modifier and the value is a function receiving the existing config as the argument and which returns a modified config object.
 
@@ -546,3 +550,184 @@ const App = () => {
     }}>
 }
 ```
+
+## useGetModifierConfig hook
+
+Use the `useGetModifierConfig` hook to get the current config object for a modifier, which will reflect any alterations done with the `modifierConfigs` prop.
+
+    useGetModifierConfig(type, name)
+
+```javascript
+import { useGetModifierConfig } from 'rjr-core';
+
+const MyWrapperModifier = (props) => {
+  const config = useGetModifierConfig('wrappers', 'MyWrapperModifier');
+
+  // .....
+};
+```
+
+## Reserved Prop Names
+
+There are a handful of component props that either cause special functionality to occur in the rendering loop (`group`, `recursive`, `excludeFromRecursion`) or are used to track the status of various states as the rendering loop recurses through the JSON config (`isInGroup`, `isRepeating`, etc)
+
+Basically, you want to avoid using these props on your components unless you're making use of RJR specific functionality.
+
+- idPath,
+- componentName,
+- groupName,
+- groupIndex,
+- group,
+- isInGroup,
+- repeatable,
+- isRepeating,
+- recursive,
+- isRecursing,
+- recursiveIndex,
+- recursingElementId,
+- excludeFromRecursion,
+- randomElementId,
+- componentPropsArg,
+
+## elements prop
+
+Rather than using the `children` property to specify the child elements of a component, you can instead set them in the component's props on `elements`. Then, you can use the `Renderer` component that's used internally by RJR to render the JSON yourself.
+
+Note that like `children`, the `elements` prop can contain partials strings that will be replaced with element JSON when the config is processed.
+
+### Example
+
+config.js
+
+```JSON
+{
+  "elements":[
+    {
+      "component":"FieldGroup",
+      "properties":{
+        "elements":[
+          {
+            "component":"Input",
+            "properties":{
+              "name":"myinput",
+              "type":"text"
+            }
+          },
+          {
+            "component":"Radio",
+            "properties": {
+              "name":"myradio",
+              "options":[
+                {
+                  "value":"one",
+                  "label":"One"
+                },
+                {
+                  "value":"two",
+                  "label":"Two"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+FieldGroup.js
+
+```javascript
+import React from 'react';
+import { Renderer } from 'rjr-core';
+
+const FieldGroup = (props) => {
+  const { elements } = props;
+
+  // .....
+
+  return <Renderer parentProps={props} elements={elements} />;
+};
+
+FieldGroup.passRenderPropsThru = true; //Important!
+
+export default FieldGroup;
+```
+
+Setting the static property `passRenderPropsThru` to true is important. As mentioned in the 'Reserved Prop Names' section, the rendering loop calculates values and passes along status values from parent to child components recursively. It uses the props object as the store of these values. (this is before React gets involved so props is just another object at this point).
+
+Typically, the PropBlacklist HOC modifier removes these values. `passRenderPropsThru` disables this for the component, which means those props/values will be passed down as part of FieldGroup's props. This is so they can then be passed to `Renderer` via `parentProps`, which is necessary for the functionality described in the following section on Form elements.
+
+## Special functionality for Forms
+
+---
+
+## Nested elements
+
+[CODESANDBOX](https://codesandbox.io/s/nested-elements-1kx99?file=/src/App.js)
+
+Nested form elements are defined by setting the `name` and `group` props on a component. These props are evaluated in the rendering loop to modify the `name` property of any of the component's descendants that are form elements.
+
+Modifying the previous JSON as an example:
+
+config.js
+
+```JSON
+{
+  "elements":[
+    {
+      "component":"FieldGroup",
+      "properties":{
+        "group":true,
+        "name":"myfieldgroup",
+        "elements":[
+          {
+            "component":"Input",
+            "properties":{
+              "name":"myinput",
+              "type":"text"
+            }
+          },
+          {
+            "component":"Radio",
+            "properties": {
+              "name":"myradio",
+              "options":[
+                {
+                  "value":"one",
+                  "label":"One"
+                },
+                {
+                  "value":"two",
+                  "label":"Two"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+This will give the Input component the name `myfieldgroup.myinput` and the Radio component the name `myfieldgroup.myradio`.
+
+## Repeating element groups
+
+[CODESANDBOX](https://codesandbox.io/s/repeating-element-group-op1w6?file=/src/App.js)
+
+A component that contains a repeating element group must have the prop `repeatable` equal to true. This will generally be the same component that has `group` equal to true.
+
+There are no hard limits on nesting element groups/repeating groups within each other.
+
+RJR doesn't create repeatable components or manage any of that - it just figures out the correct value of `name` for form elements, based on the values for props `group`, `repeatable`, `name` and `groupIndex` passed to the components in a hierarchy.
+
+To create a repeating collection of form elements, you need a form library, and for the codesandbox example I used [React-Hook-Form](https://react-hook-form.com/)
+
+The [Control Group](https://codesandbox.io/s/repeating-element-group-op1w6?file=/src/components/controls/ControlGroup/index.js) component handles the repeating elements using React-Hook-Form's [Field Array](https://react-hook-form.com/advanced-usage#FieldArrays). The Renderer component is used in the [Item](https://codesandbox.io/s/repeating-element-group-op1w6?file=/src/components/controls/ControlGroup/Item.js) component.
+
+## Recursion
+
+In progress...

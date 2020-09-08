@@ -1,1 +1,1 @@
-declare module 'json-logic-js';
+declare module 'json-logic-js-mini';

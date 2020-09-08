@@ -31,6 +31,7 @@ const Render = React.memo<RenderProps>((renderProps) => {
 
   let {
     current: {
+      config,
       componentMap,
       rjrProps,
       initComponentProps,
@@ -54,12 +55,32 @@ const Render = React.memo<RenderProps>((renderProps) => {
 
   useSetStoredProps(props);
 
+  const maxDepth = props.maxDepth ? props.maxDepth + 1 : 2;
+
+  if (props.recursive && props.recursiveIndex < maxDepth) {
+    props.elements = cloneDeep(config.elements);
+  } else {
+    props.elements = [];
+  }
+
   if (props.active === false) {
     return null;
   }
 
-  if (props.isRecursing && props.excludeFromRecursion === true) {
-    return null;
+  if (props.isRecursing) {
+    if (
+      typeof props.exludeFromRecursion === 'boolean' &&
+      props.excludeFromRecursion === true
+    ) {
+      return null;
+    }
+
+    if (
+      typeof props.excludeFromRecursion === 'number' &&
+      props.recursiveIndex >= props.excludeFromRecursion + 1
+    ) {
+      return null;
+    }
   }
 
   const component = componentMap[element.component]

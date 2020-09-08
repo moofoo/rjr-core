@@ -3485,10 +3485,10 @@ jsesc@~0.5.0:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
-json-logic-js@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/json-logic-js/-/json-logic-js-1.2.2.tgz#e5c382aa6df25df485edead339869396c533afe8"
-  integrity sha1-5cOCqm3yXfSF7erTOYaTlsUzr+g=
+json-logic-js-mini@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/json-logic-js-mini/-/json-logic-js-mini-1.0.0.tgz#60775c0435338e8503b65f2fe3490eb1a728f55b"
+  integrity sha512-9deHofqoV9QE6HW3j7+gvhDicBgKlRxeMk1cIkYMj0ehP03+64W3D2lMx3qjmS3b3IHluRy6Iz8fKMBcCNfd1g==
 
 json-parse-even-better-errors@^2.3.0:
   version "2.3.1"
