@@ -18,8 +18,8 @@ yarn add rjr-core
 4. [Modifiers](#modifiers)
 5. [modifierConfigs](#modifierConfigs)
 6. [useGetModifierConfig Hook](#useGetModifierConfig-hook)
-7. [Reserved PRop Names](#reserved-prop-names)
-8. [elements prop](#elements-prop)
+7. [Reserved Prop Names](#reserved-prop-names)
+8. [Elements prop](#elements-prop)
 9. [Special functionality for Forms](#special-functionality-for-forms)
 
 ## Basic Usage
@@ -589,7 +589,7 @@ Basically, you want to avoid using these props on your components unless you're 
 - randomElementId,
 - componentPropsArg,
 
-## elements prop
+## Elements prop
 
 Rather than using the `children` property to specify the child elements of a component, you can instead set them in the component's props on `elements`. Then, you can use the `Renderer` component that's used internally by RJR to render the JSON yourself.
 
@@ -704,6 +704,21 @@ config.js
                 }
               ]
             }
+          },
+          {
+            "component":"FieldGroup",
+            "properties":{
+              "name":"nestedgroup",
+              "group":true
+            },
+            "children":[
+              {
+                "component":"Input",
+                "properties":{
+                  "name":"yourinput"
+                }
+              }
+            ]
           }
         ]
       }
@@ -713,6 +728,64 @@ config.js
 ```
 
 This will give the Input component the name `myfieldgroup.myinput` and the Radio component the name `myfieldgroup.myradio`.
+
+Nested groups can be added indefinitely, for example (modifying the above):
+
+```JSON
+{
+  "elements":[
+    {
+      "component":"FieldGroup",
+      "properties":{
+        "group":true,
+        "name":"myfieldgroup",
+        "elements":[
+          {
+            "component":"Input",
+            "properties":{
+              "name":"myinput",
+              "type":"text"
+            }
+          },
+          {
+            "component":"Radio",
+            "properties": {
+              "name":"myradio",
+              "options":[
+                {
+                  "value":"one",
+                  "label":"One"
+                },
+                {
+                  "value":"two",
+                  "label":"Two"
+                }
+              ]
+            }
+          },
+          {
+            "component":"FieldGroup",
+            "properties":{
+              "name":"nestedgroup",
+              "group":true
+            },
+            "children":[
+              {
+                "component":"Input",
+                "properties":{
+                  "name":"yourinput"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+The last input would have the name `myfieldgroup.nestedgroup.yourinput`.
 
 ## Repeating element groups
 

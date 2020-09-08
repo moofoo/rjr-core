@@ -68,10 +68,7 @@ const Render = React.memo<RenderProps>((renderProps) => {
   }
 
   if (props.isRecursing) {
-    if (
-      typeof props.exludeFromRecursion === 'boolean' &&
-      props.excludeFromRecursion === true
-    ) {
+    if (props.excludeFromRecursion === true) {
       return null;
     }
 
