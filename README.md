@@ -807,9 +807,9 @@ The [Control Group](https://codesandbox.io/s/repeating-element-group-op1w6?file=
 
 [CODESANDBOX](https://codesandbox.io/s/recursion-example-t2shc?file=/src/App.js);
 
-If `recursive:true` for a component, the rendering loop will set `elements` on its props equal to the whole elements array from the original config.json. It's up to the component to render the JSON with the `Renderer` component.
+If `recursive:true` for a component, the rendering loop will set `elements` on its props equal to the whole elements array from the original config.json. It's up to the component to render the JSON with the `Renderer` component (See: [Elements prop](#elements-prop)).
 
-You can specify the maximum number of times the component will recursively display the elements JSON with the `maxDepth` prop;
+You can specify the maximum number of times the component will recursively render with the `maxDepth` prop;
 
 And, you can prevent specific components from being rendered during recursion by using the `excludeFromRecursion` prop;
 
