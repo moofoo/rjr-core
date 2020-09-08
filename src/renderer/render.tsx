@@ -55,7 +55,7 @@ const Render = React.memo<RenderProps>((renderProps) => {
 
   useSetStoredProps(props);
 
-  const maxDepth = props.maxDepth ? props.maxDepth + 1 : 2;
+  const maxDepth = props.maxDepth ? props.maxDepth + 1 : 10;
 
   if (props.recursive && props.recursiveIndex < maxDepth) {
     props.elements = cloneDeep(config.elements);

@@ -21,6 +21,8 @@ yarn add rjr-core
 7. [Reserved Prop Names](#reserved-prop-names)
 8. [Elements prop](#elements-prop)
 9. [Special functionality for Forms](#special-functionality-for-forms)
+10. [Recursion](#recursion)
+11. [All Codesandbox Examples](#all-codesandbox-examples)
 
 ## Basic Usage
 
@@ -803,4 +805,19 @@ The [Control Group](https://codesandbox.io/s/repeating-element-group-op1w6?file=
 
 ## Recursion
 
-In progress...
+[CODESANDBOX](https://codesandbox.io/s/recursion-example-t2shc?file=/src/App.js);
+
+If `recursive:true` for a component, the rendering loop will set `elements` on its props equal to the whole elements array from the original config.json. It's up to the component to render the JSON with the `Renderer` component.
+
+You can specify the maximum number of times the component will recursively display the elements JSON with the `maxDepth` prop;
+
+And, you can prevent specific components from being rendered during recursion by using the `excludeFromRecursion` prop;
+
+## All Codesandbox Examples
+
+1. [Basic Usage](https://codesandbox.io/s/basic-usage-h1hwz)
+2. [Wrappers](https://codesandbox.io/s/showcontrolnames-ulm28)
+3. [modifierConfigs](https://codesandbox.io/s/modifierconfigs-dqimk)
+4. [Nested Elements](https://codesandbox.io/s/nested-elements-1kx99?file=/src/App.js)
+5. [Repeating Element Groups](https://codesandbox.io/s/repeating-element-group-op1w6?file=/src/App.js)
+6. [Recursion](https://codesandbox.io/s/recursion-example-t2shc?file=/src/App.js)
