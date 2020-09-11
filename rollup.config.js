@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import babel from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
+
 import pkg from './package.json';
 export default {
   input: 'src/index.tsx',
@@ -31,5 +32,5 @@ export default {
     }),
     json(),
   ],
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'lodash'],
 };

@@ -1,12 +1,5 @@
 import { Dispatch } from 'react';
 
-import {
-  SetStateObject,
-  SetStateValue,
-  UpdateComponentProps,
-  SetComponentProps,
-} from './context/RendererProvider';
-
 export interface Element {
   component: string;
   properties?: any;
@@ -55,21 +48,8 @@ export interface Modifiers {
   [index: string]: Array<Modifier>;
 }
 
-interface RendererContextMethods {
-  setStateObject: SetStateObject;
-  setStateValue: SetStateValue;
-  updateComponentProps: UpdateComponentProps;
-  setComponentProps: SetComponentProps;
-}
-
-type ComponentPropsFunction = (
-  props: any,
-  contextMethods: RendererContextMethods,
-  componentPropsArg: any
-) => Object;
-
 export interface ComponentProps {
-  [index: string]: ComponentPropsFunction | Object;
+  [index: string]: any;
 }
 
 export interface RjrProps extends VariableObject {

@@ -67,6 +67,29 @@ describe('react json renderer', () => {
     );
   });
 
+  test('renders multiple components with props modified by componentProps function, using component name', () => {
+    let rendered;
+
+    rendered = mount(
+      <RJR
+        config={multipleComponentconfig}
+        componentMap={componentMap}
+        componentProps={{
+          Display: (props) => {
+            return {
+              ...props,
+              contents: 'Whatever',
+            };
+          },
+        }}
+      />
+    );
+
+    expect(rendered.html()).toEqual(
+      '<div><div>Whatever</div><div>Whatever</div><div>Whatever</div></div>'
+    );
+  });
+
   test('renders multiple components with props modified by componentProps prop, using "all ', () => {
     let rendered;
 

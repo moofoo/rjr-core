@@ -59,8 +59,6 @@ const Render = React.memo<RenderProps>((renderProps) => {
 
   if (props.recursive && props.recursiveIndex < maxDepth) {
     props.elements = cloneDeep(config.elements);
-  } else {
-    props.elements = [];
   }
 
   if (props.active === false) {

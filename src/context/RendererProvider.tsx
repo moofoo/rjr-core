@@ -1,13 +1,15 @@
-import createReducerContext from './createReducerContext';
-import mergeValues from '../util/mergeValues';
 import {
-  VariableObject,
-  ComponentProps,
-  ReferenceContext,
-  DispatchFunction,
-} from '../types';
+  createReducerContext,
+  Reducer,
+  DispatchAction,
+} from 'real-simple-context';
+import mergeValues from '../util/mergeValues';
 
-const reducer = (state: any, action: VariableObject) => {
+const initialState = {
+  componentProps: {},
+};
+
+const reducer: Reducer<typeof initialState> = (state, action) => {
   switch (action.type) {
     case 'SET_STATE_VALUE': {
       return {
@@ -51,9 +53,7 @@ const reducer = (state: any, action: VariableObject) => {
   }
 };
 
-export type SetStateValue = (name: string, object: any) => void;
-
-const setStateValue: DispatchFunction<SetStateValue> = (dispatch) => (
+const setStateValue = (dispatch: DispatchAction) => (
   name: string,
   value: any
 ) => {
@@ -64,9 +64,7 @@ const setStateValue: DispatchFunction<SetStateValue> = (dispatch) => (
   });
 };
 
-export type SetStateObject = (name: string, object: any) => void;
-
-const setStateObject: DispatchFunction<SetStateObject> = (dispatch) => (
+const setStateObject = (dispatch: DispatchAction) => (
   name: string,
   object: any
 ) => {
@@ -77,11 +75,10 @@ const setStateObject: DispatchFunction<SetStateObject> = (dispatch) => (
   });
 };
 
-export type UpdateComponentProps = (name: string, prop: any) => void;
-
-const updateComponentProps: DispatchFunction<UpdateComponentProps> = (
-  dispatch
-) => (name: string, prop: any) => {
+const updateComponentProps = (dispatch: DispatchAction) => (
+  name: string,
+  prop: any
+) => {
   dispatch({
     type: 'UPDATE_COMPONENT_PROPS',
     name,
@@ -89,43 +86,19 @@ const updateComponentProps: DispatchFunction<UpdateComponentProps> = (
   });
 };
 
-export type SetComponentProps = (props: any) => void;
-
-const setComponentProps: DispatchFunction<SetComponentProps> = (dispatch) => (
-  props: any
-) => {
+const setComponentProps = (dispatch: DispatchAction) => (props: any) => {
   dispatch({
     type: 'SET_COMPONENT_PROPS',
     props,
   });
 };
 
-interface DispatchContext {
-  setComponentProps: SetComponentProps;
-  updateComponentProps: UpdateComponentProps;
-  setStateObject: SetStateObject;
-  setStateValue: SetStateValue;
-}
-
-interface StateContext extends DispatchContext {
-  componentProps: ComponentProps;
-}
-
-interface RendererContext {
-  useSelector: Function;
-  useStateContext: () => StateContext;
-  useReferenceContext: () => ReferenceContext;
-  useDispatchContext: () => DispatchContext;
-  Provider: React.FunctionComponent<any>;
-}
-
 export const {
   useSelector: useRendererSelector,
-  useStateContext: useRendererStateContext,
-  useReferenceContext: useRendererReferenceContext,
-  useDispatchContext: useRendererDispatchContext,
+  useReference: useRendererReferenceContext,
+  useActions: useRendererDispatchContext,
   Provider: RendererProvider,
-}: RendererContext = createReducerContext(
+} = createReducerContext(
   reducer,
   {
     setStateValue,
@@ -133,7 +106,6 @@ export const {
     setComponentProps,
     updateComponentProps,
   },
-  {
-    componentProps: {},
-  }
+  initialState,
+  true
 );
