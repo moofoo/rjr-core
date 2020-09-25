@@ -10,7 +10,7 @@
     "React"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "set NODE_ENV=production && rollup -c",
     "start": "rollup -c -w",
     "test": "jest",
     "relink": "yalc remove rjr-core & yarn build & yalc publish & yalc link rjr-core"
@@ -56,6 +56,6 @@
   "dependencies": {
     "json-logic-js-mini": "^1.0.0",
     "lodash": "^4.17.20",
-    "real-simple-context": "^1.0.7"
+    "real-simple-context": "^1.0.9"
   }
 }

@@ -4342,13 +4342,12 @@ readable-stream@^3.1.1:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
-real-simple-context@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/real-simple-context/-/real-simple-context-1.0.7.tgz#49821bed9808909bc3b314027314db7aca984ed1"
-  integrity sha512-7xMrTJ92mvo/sHpyBFUCly/nbpzMd+hymCU1V+9M/1cY6QBO7RkWFDMAAu6qWv0y6t3wYx0a59Uuf7WzP8VACQ==
+real-simple-context@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/real-simple-context/-/real-simple-context-1.0.9.tgz#82632d0ae7adaf2141f4047ed9451364ad5eaa2f"
+  integrity sha512-+ODg0mKhiIXmcwDR+oOvoBLFHLNbuAFtnFca+LUHit0EE/7TJfWX9qgSl05vj/2vI8PhM2o9K7fRjQY2H+8cmw==
   dependencies:
     use-context-selection "^1.4.2"
-    use-context-selector "^1.1.2"
 
 reflect.ownkeys@^0.2.0:
   version "0.2.0"
@@ -5207,11 +5206,6 @@ use-context-selection@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/use-context-selection/-/use-context-selection-1.4.2.tgz#090c430ad24f510ba7634285542597a2af5f9365"
   integrity sha512-5dO2wxaSE9WqtdV6w6TZH9gItzbt5Pv7hTKJZ8R3EgdGKritQVZW/ti81g/Yw5dQvpShe+ounkQ4BBjvy2ujgg==
-
-use-context-selector@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/use-context-selector/-/use-context-selector-1.1.2.tgz#63bf6e3502fd383f1257c49df2495e05564d262e"
-  integrity sha512-uwtrMKEHjZQ8JXMZLUljVDY4CqpAC3MgMcmtpZACG+pJeJ7GNDzBW0thC2RbJX2wKYMvLtYRXgQEqaOnmlF/KQ==
 
 use@^3.1.0:
   version "3.1.1"
